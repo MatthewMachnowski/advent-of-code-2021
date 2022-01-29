@@ -1,7 +1,10 @@
 with open("input.txt") as f:
-    raw_data = f.read().strip().split(',')
+    data = [int(i) for i in f.read().strip().split(',')]
 
-data = [int(i) for i in raw_data]
+positions = [0] * max(data)
+for crab_pos in data:
+    for pos in range(len(positions)):
+        positions[pos] += abs(crab_pos - pos)
+ans = min(positions)
 
-max_pos = max(data)
-
+print(ans)
